@@ -49,7 +49,7 @@ public class LoanCalc {
 			} else {
 				H = g;
 			}
-			g = (H + L) / 2; // Move this line outside the else block
+			g = (H + L) / 2; 
 			iterationCounter++;
 		}
 		return g;
