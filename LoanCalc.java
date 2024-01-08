@@ -24,42 +24,44 @@ public class LoanCalc {
 		System.out.println();
 		System.out.println("number of iterations: " + iterationCounter);
 	}
-
-
-	public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {
-		double g = loan / n;
+	
+	
+    public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {  
+    	double g = loan / n; 
 		iterationCounter = 0;
-		while (endBalance(loan, rate, n, g) > epsilon) {
+		while(endBalance(loan, rate, n, g) > 0) {
 			g += epsilon;
 			iterationCounter++;
 		}
-		return g;
-	}
-
-
-	
-	public static double bisectionSolver(double loan, double rate, int n, double epsilon) {
-		iterationCounter = 0;
+    	return g;
+    }
+    
+   
+    public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
+		
 		double H = loan;
 		double L = loan / n;
 		double g = (L + H) / 2;
+		iterationCounter = 0;
 		while ((H - L) > epsilon) {
-			if (endBalance(loan, rate, n, L) * endBalance(loan, rate, n, g) > 0) {
+			// Sets L and H for the next iteration
+			if (endBalance(loan, rate, n, g) * endBalance(loan, rate, n, L) > 0 ) {
 				L = g;
 			} else {
 				H = g;
 			}
-			g = (H + L) / 2; 
+			g = (L + H) / 2;
 			iterationCounter++;
 		}
 		return g;
-	}
-	
+    }
 	
 	
 	private static double endBalance(double loan, double rate, int n, double payment) {
-		for( int i = 0; i <= n; i++) {
-			loan = (loan - payment) * (1+(rate / 100)) ; 
+		int i = 0;
+		while(loan > 0 && i < n) {
+			loan = (loan - payment) * ((rate / 100) + 1);
+			i++;
 		}
     	return loan;
 	}
