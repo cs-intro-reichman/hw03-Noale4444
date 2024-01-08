@@ -9,7 +9,7 @@ public class LowerCase {
     public static String lowerCase(String s) {
        String s1 = ""; 
        for( int i = 0; i < s.length(); i++) {
-        if( s.charAt(i) > 'A' && s.charAt(i) < 'Z' ) {
+        if( s.charAt(i) >= 'A' && s.charAt(i) <= 'Z' ) {
             s1 += (char) (s.charAt(i) + 32);
      }  else {
             s1 += (char) (s.charAt(i)); 
