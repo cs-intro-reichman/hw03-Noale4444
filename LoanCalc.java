@@ -59,10 +59,10 @@ public class LoanCalc {
 	
 	private static double endBalance(double loan, double rate, int n, double payment) {
 		int i = 0;
-		while(loan > 0 && i < n) {
+		while(loan > 0 && i < n) { // #feedback - we can have a negative balance, so you can just iterate over all the payments. 
 			loan = (loan - payment) * ((rate / 100) + 1);
 			i++;
 		}
-    	return loan;
+		return loan;	
 	}
 }
