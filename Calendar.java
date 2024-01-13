@@ -55,6 +55,8 @@ public class Calendar {
 	
     
     private static boolean isLeapYear(int curYear) {
+	// #feedback - isLeapYear is redundant, you can return its value directly -
+	// return (curYear % 400 == 0 || curYear % 4 == 0 && curYear % 100 != 0);
         boolean isLeapYear =  (curYear % 400 == 0 || curYear % 4 == 0 && curYear % 100 != 0); 
         return isLeapYear; 
     }
@@ -74,7 +76,7 @@ public class Calendar {
                 nDays = 31; 
                 break;
 
-            default: 
+            default: // #feedback - this case is not supported, so it is better to define the default as 31 days (and remove the related case).
                 nDays = 0; 
                 break;
         }
