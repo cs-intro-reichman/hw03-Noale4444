@@ -11,10 +11,10 @@ public class LowerCase {
        for( int i = 0; i < s.length(); i++) {
         if( s.charAt(i) >= 'A' && s.charAt(i) <= 'Z' ) {
             s1 += (char) (s.charAt(i) + 32);
-     }  else {
-            s1 += (char) (s.charAt(i)); 
-     }
-    }
+         }  else { // #feedback - note the indentation here.
+                s1 += (char) (s.charAt(i)); // #feedback - casting here is not needed, charAt returns a character.
+         }
+        }
         return s1;
     }
 }
